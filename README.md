@@ -23,7 +23,7 @@ This is a calendar application built with React and Vite.js. It allows users to 
 
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/abhishek9640/mobiscroll-calendar
    cd my-calendar-app
 
 
