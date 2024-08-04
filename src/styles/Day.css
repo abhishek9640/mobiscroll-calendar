@@ -1,0 +1,16 @@
+.day {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    position: relative;
+  }
+  
+  .day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8em;
+    color: #888;
+  }
+  
