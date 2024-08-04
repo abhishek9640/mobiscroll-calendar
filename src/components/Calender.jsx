@@ -6,31 +6,37 @@ import '../styles/Calender.css';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 const Calendar = () => {
+    // Initialize events from localStorage or default to an empty array
   const [events, setEvents] = useState(() => {
     const savedEvents = localStorage.getItem('events');
     return savedEvents ? JSON.parse(savedEvents) : [];
   });
+
+  // Initialize currentMonth to today's date
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
+  // Save events to localStorage whenever events change
   useEffect(() => {
     localStorage.setItem('events', JSON.stringify(events));
   }, [events]);
 
+  // Add a new event with a unique ID and random color  
   const addEvent = (event) => {
     setEvents([...events, { ...event, id: Date.now(), color: getRandomColor() }]);
   };
 
+  // Delete an event after user confirmation
   const deleteEvent = (id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       setEvents(events.filter(event => event.id !== id));
     }
   };
 
+  // Handle drag-and-drop to move events between dates
   const onDragEnd = (result) => {
     if (!result.destination) return;
 
     const { source, destination } = result;
-    // const sourceDay = parseInt(source.droppableId.split('-')[1]);
     const destDay = parseInt(destination.droppableId.split('-')[1]);
 
     const movedEvent = events.find((event, index) => index === source.index);
@@ -42,6 +48,7 @@ const Calendar = () => {
     setEvents(updatedEvents);
   };
 
+  // Generate a random color for events
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';
