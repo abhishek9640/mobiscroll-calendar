@@ -1,16 +1,19 @@
 .day {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    min-height: 100px;
-    position: relative;
-  }
-  
-  .day-number {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 0.8em;
-    color: #888;
-  }
-  
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.today {
+  background-color: #ffe0b2;
+}

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import '../styles/EventForm.css';
 
 const EventForm = ({ addEvent }) => {
-  const [eventData, setEventData] = useState({ name: '', date: '', color: '#000000' });
+  const [eventData, setEventData] = useState({ name: '', date: '', time: '', color: '#000000' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addEvent({ ...eventData, id: Date.now() });
-    setEventData({ name: '', date: '', color: '#000000' });
+    setEventData({ name: '', date: '', time: '', color: '#000000' });
   };
 
   return (
@@ -27,6 +27,12 @@ const EventForm = ({ addEvent }) => {
         required
       />
       <input
+        type="time"
+        value={eventData.time}
+        onChange={(e) => setEventData({ ...eventData, time: e.target.value })}
+        required
+      />
+      <input
         type="color"
         value={eventData.color}
         onChange={(e) => setEventData({ ...eventData, color: e.target.value })}
@@ -37,7 +43,7 @@ const EventForm = ({ addEvent }) => {
 };
 
 EventForm.propTypes = {
-  addEvent: PropTypes.func.isRequired,  // Function to add a new event
+  addEvent: PropTypes.func.isRequired,
 };
 
 export default EventForm;
